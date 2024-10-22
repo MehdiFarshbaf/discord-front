@@ -19,7 +19,7 @@ const PendingInvitationsItem = ({
         setDisable(true)
     }
     return (
-        <Tooltip title={user.serderId.email}>
+        <Tooltip title={user.senderUser.email}>
             <div style={{width: '100%'}}>
                 <Box sx={{
                     width: '100%',
@@ -29,13 +29,13 @@ const PendingInvitationsItem = ({
                     alignItems: 'center',
                     justifyContent: 'space-between'
                 }}>
-                    <Avatar username={user.serderId.username}/>
+                    <Avatar username={user.senderUser.username}/>
                     <Typography sx={{
                         marginLeft: '7px',
                         fontWeight: 700,
                         color: '#8e9291',
                         flexGrow: 1
-                    }} variant='subtitle1'>{user.serderId.username}</Typography>
+                    }} variant='subtitle1'>{user.senderUser.username}</Typography>
                     <InvitationDecisionButtons disable={disable} acceptFriendInvitation={handleAccept}
                                                rejectFriendInvitation={handleReject}/>
                 </Box>

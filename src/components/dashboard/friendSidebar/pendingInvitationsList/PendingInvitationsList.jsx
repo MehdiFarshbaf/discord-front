@@ -1,5 +1,6 @@
 import {styled} from "@mui/material";
 import PendingInvitationsItem from "./PendingInvitationsItem";
+import { useSelector } from "react-redux";
 
 const MainContainer = styled('div')({
     width: '100%',
@@ -10,15 +11,14 @@ const MainContainer = styled('div')({
     overflow: 'auto'
 })
 
-const invitationList = [
-    {_id: 0, serderId: {username: 'ahmad', email: 'admad@gmail.com'}},
-    {_id: 1, serderId: {username: 'hadi', email: 'hadi@gmail.com'}},
-]
 
 const PendingInvitationsList = () => {
+
+    const {pendingFriendsInvitations} = useSelector(state=>state.friends)
+    
     return (
         <MainContainer>
-            {invitationList.map(user => (
+            {pendingFriendsInvitations.map(user => (
                 <PendingInvitationsItem user={user}/>
             ))}
         </MainContainer>
