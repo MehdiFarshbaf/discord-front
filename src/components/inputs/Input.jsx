@@ -10,7 +10,8 @@ const Label = styled('p')({
     color: '#b9bbbe',
     textTransform: 'uppercase',
     fontWeight: '600',
-    fontSize: '16px'
+    fontSize: '16px',
+    fontFamily: 'monospace'
 })
 const InputComponent = styled('input')({
     flexFlow: 1,

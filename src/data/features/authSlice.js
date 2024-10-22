@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
-import * as api from '../../../utils/api'
-import {openAlertMessage} from "../alert/alertSlice";
+import * as api from '../../utils/api'
+import {openAlertMessage} from "./alertSlice";
 
 const authSlice = createSlice({
     name: 'auth',

@@ -5,7 +5,7 @@ const RedirectText = styled('span')({
     fontWeight: '500',
     cursor: 'pointer'
 })
-const Redirect = ({text, redirectText, additionalStyles, redirectHandler}) => {
+const RedirectInfo = ({text, redirectText, additionalStyles, redirectHandler}) => {
     return (
         <Typography sx={{color: '#72767d'}} variant="subtitle2"
                     style={additionalStyles ? additionalStyles : {}}>
@@ -14,4 +14,4 @@ const Redirect = ({text, redirectText, additionalStyles, redirectHandler}) => {
         </Typography>
     )
 }
-export default RedirectText
+export default RedirectInfo
