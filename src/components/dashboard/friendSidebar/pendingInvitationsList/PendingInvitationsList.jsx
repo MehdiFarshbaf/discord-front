@@ -18,8 +18,8 @@ const PendingInvitationsList = () => {
     
     return (
         <MainContainer>
-            {pendingFriendsInvitations.map(user => (
-                <PendingInvitationsItem user={user}/>
+            {pendingFriendsInvitations.map(invitation => (
+                <PendingInvitationsItem invitation={invitation}/>
             ))}
         </MainContainer>
     )

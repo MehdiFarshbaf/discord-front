@@ -1,5 +1,6 @@
 import axios from "axios";
 import {logout} from "./auth";
+import {acceptFriendInvitation} from "../data/features/friendsSlice";
 
 const apiClient = axios.create({
     baseURL: 'http://localhost:4000/api',
@@ -38,6 +39,24 @@ export const register = async (data) => {
 export const sendFriendInvitation = async (data) => {
     try {
         const {data: res} = await apiClient.post('/friend-invitation/invite', data)
+        return res
+    } catch (err) {
+        return err?.response?.data
+    }
+}
+
+export const acceptFriend = async (id) => {
+    try {
+        const {data: res} = await apiClient.post('/friend-invitation/accept', {id})
+        return res
+    } catch (err) {
+        return err?.response?.data
+    }
+}
+
+export const rejectFriend = async (id) => {
+    try {
+        const {data: res} = await apiClient.post('/friend-invitation/reject', {id})
         return res
     } catch (err) {
         return err?.response?.data

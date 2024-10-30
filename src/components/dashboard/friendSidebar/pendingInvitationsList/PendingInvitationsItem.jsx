@@ -2,24 +2,23 @@ import {useState} from "react";
 import {Box, Tooltip, Typography} from "@mui/material";
 import Avatar from "../../../Avatar";
 import InvitationDecisionButtons from "./InvitationDecisionButtons";
+import {useDispatch} from "react-redux";
+import {acceptFriendInvitation, rejectFriendInvitation} from "../../../../data/features/friendsSlice";
 
-const PendingInvitationsItem = ({
-                                    user, acceptFriendInvitation = () => {
-    }
-                                }, rejectFriendInvitation = () => {
-}) => {
+const PendingInvitationsItem = ({invitation}) => {
 
     const [disable, setDisable] = useState(false)
+    const dispatch = useDispatch()
     const handleAccept = () => {
-        acceptFriendInvitation(user._id)
-        setDisable(true)
+        dispatch(acceptFriendInvitation(invitation._id))
+        // setDisable(true)
     }
     const handleReject = () => {
-        rejectFriendInvitation(user._id)
-        setDisable(true)
+        dispatch(rejectFriendInvitation(invitation._id))
+        // setDisable(true)
     }
     return (
-        <Tooltip title={user.senderUser.email}>
+        <Tooltip title={invitation.senderUser.email}>
             <div style={{width: '100%'}}>
                 <Box sx={{
                     width: '100%',
@@ -29,13 +28,13 @@ const PendingInvitationsItem = ({
                     alignItems: 'center',
                     justifyContent: 'space-between'
                 }}>
-                    <Avatar username={user.senderUser.username}/>
+                    <Avatar username={invitation.senderUser.username}/>
                     <Typography sx={{
                         marginLeft: '7px',
                         fontWeight: 700,
                         color: '#8e9291',
                         flexGrow: 1
-                    }} variant='subtitle1'>{user.senderUser.username}</Typography>
+                    }} variant='subtitle1'>{invitation.senderUser.username}</Typography>
                     <InvitationDecisionButtons disable={disable} acceptFriendInvitation={handleAccept}
                                                rejectFriendInvitation={handleReject}/>
                 </Box>
