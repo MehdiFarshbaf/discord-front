@@ -7,18 +7,21 @@ const MainContainer = styled('div')({
     width: '100%'
 })
 
-// const friends = [
-//     {_id: 0, username: 'mehdi', isOnline: true},
-//     {_id: 1, username: 'zahra', isOnline: false},
-//     {_id: 2, username: 'samira', isOnline: false},
-// ]
-
 const FriendsList = () => {
 
-    const {friends} = useSelector(state => state.friends)
+    const {friends, onlineUsers} = useSelector(state => state.friends)
+
+    const checkOnlineUsers = () => {
+        const fs = friends.map(friend => {
+            const isOnlineUser = onlineUsers.find(user => user.userId === friend.id)
+            return {...friend, isOnline: !!isOnlineUser}
+        })
+        return fs
+    }
+
     return (
         <MainContainer>
-            {friends.map(friend => (
+            {checkOnlineUsers().map(friend => (
                 <FriendItem friend={friend}/>
             ))}
         </MainContainer>
