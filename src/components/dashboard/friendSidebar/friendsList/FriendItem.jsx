@@ -1,10 +1,18 @@
 import {Button, Typography} from "@mui/material";
 import Avatar from "../../../Avatar";
 import OnlineIndicator from "./OnlineIndicator";
+import {useDispatch} from "react-redux";
+import {setChosenChatDetails} from "../../../../data/features/chatSlice";
 
 const FriendItem = ({friend}) => {
+
+    const dispatch = useDispatch()
+    const handleChooseActiveConversation = () => {
+        dispatch(setChosenChatDetails({chatDetails: friend, chatType: 'DIRECT'}))
+    }
+
     return (
-        <Button key={friend._id} style={{
+        <Button key={friend._id} onClick={handleChooseActiveConversation} style={{
             width: '100%',
             height: '42px',
             marginTop: '10px',

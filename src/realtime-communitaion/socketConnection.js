@@ -29,9 +29,21 @@ export const connectWithSocketServer = (userDetails) => {
             store.dispatch(setFriends(friends))
         })
 
+        socket.on("direct-chat-history", (data) => {
+            console.log("chat is : ", data)
+        })
+
         socket.on("online-users", (data) => {
             const {onlineUsers} = data
             store.dispatch(setOnlineUsers(onlineUsers))
         })
     })
+    // تا اینجا سوکت رو لیسن شد حالا میخوایم امیت بشه
+}
+export const sendDirectMessage = (data) => {
+    socket.emit("direct-message", data)
+}
+
+export const getDirectChatHistory = (data) => {
+    socket.emit("direct-chat-history", data)
 }
